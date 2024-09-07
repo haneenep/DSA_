@@ -122,3 +122,18 @@ let strings = 'How is it going'
 console.log(endsWithDot(strings));
 
 
+
+function stringOneCappAndSmall(s){
+    let ss = ''
+     for(let i = 0; i<s.length; i++){
+        if(i%2==0){
+            ss += s[i].toUpperCase()
+            
+        }else{
+            ss += s[i]
+        }
+     }
+     return ss
+}
+let strg = 'haneen'
+console.log(stringOneCappAndSmall(strg));
