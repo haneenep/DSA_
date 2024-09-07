@@ -1,47 +1,42 @@
-class Node{
+class Node {
     constructor(value){
         this.value = value
         this.next = null
     }
 }
 
-class stack{
-    constructor(){
-        this.top = null
-        this.length = 0
-    }
-
-    isEmpty(){
-        return this.length === 0
-    }
-
-    push(value){
+class Stack {
+    constructor(value) {
         const newNode = new Node(value)
-        if(this.isEmpty()){
+        this.top = newNode
+        this.length = 1
+    }
+
+    push(value) {
+        const newNode = new Node(value)
+        if(this.length === 0) {
             this.top = newNode
-        }else{
+        } else {
             newNode.next = this.top
             this.top = newNode
         }
         this.length++
+        return this 
     }
 
-    print(){
-        if(this.isEmpty()){
-            console.log("List is empty");            
-        }
-        let curr = this.top
-        let listvalues = ''
-        while(curr){
-            listvalues += `${curr.value}`
-            curr = curr.next
-        }
-        console.log(listvalues);        
+    pop() {
+        if(this.length === 0) return undefined
+        
+        let temp = this.top
+        this.top = this.top.next
+        temp.next = null
+
+        this.length--
+        return temp
     }
 }
 
-const stacks = new stack()
-
-stacks.push(33)
-stacks.push(39)
-stacks.push(40)
+let myStack = new Stack(7)
+myStack.push(23)
+myStack.push(3)
+myStack.push(11)
